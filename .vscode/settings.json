@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "PythonProjects\\Scripts\\python.exe",
+    "code-runner.executorMap": {
+        "python": "PythonProjects\\Scripts\\python.exe",
+    },
+    "python.testing.promptToConfigure": false,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false
+}
