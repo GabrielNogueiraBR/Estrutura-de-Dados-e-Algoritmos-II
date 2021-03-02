@@ -42,7 +42,7 @@ def vender(indice, acao, qtd_acao):
 acoes = 0
 carteira = 100
 
-FACN = [8.50,8.0,9.0,8.5,8.5,9.0,8.0,7.0]
+FACN = [1.61, 1.67, 1.46, 1.27, 0.75, 0.85, 0.80, 0.86, 1.13, 0.89, 0.72, 0.69, 0.64, 0.80, 0.55, 0.72, 0.55]
 
 # O lucro de um investimento eh definido na hora da compra e nao da venda.
 
