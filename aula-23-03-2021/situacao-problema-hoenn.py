@@ -96,7 +96,7 @@ def menor_rota_recursiva(grafo, dist, vertice):
         for u in grafo.arestas[vertice]:
             if dist[vertice] == (dist[u] + grafo.pesos[(u,vertice)]):
                 list = menor_rota_recursiva(grafo,dist,u)
-                list.append(u)
+                list.append(vertice)
                 return list
         
 
@@ -112,7 +112,7 @@ def menor_rota (grafo, origem, destino, usar_aereo, usar_aquatico):
 
     dist = dijkstra(grafo, origem)
     menor_rota = menor_rota_recursiva(grafo,dist,destino)
-    menor_rota.append(destino)
+    
 
     return menor_rota
     # Aplicar o conceito reverso visto nas aulas de eletiva I
