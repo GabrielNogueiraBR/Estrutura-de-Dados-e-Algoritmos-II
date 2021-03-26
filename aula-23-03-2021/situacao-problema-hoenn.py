@@ -12,10 +12,10 @@ class Grafo:
     def adiciona_aresta(self,origem,destino,peso):
         
         if origem not in self.vertices:
-            adiciona_vertice(origem)
+            self.adiciona_vertice(origem)
         
         if destino not in self.vertices:
-            adiciona_vertice(destino)
+            self.adiciona_vertice(destino)
         
         # Adicionando as arestas do grafo nao direcionado
         self.arestas[origem].append(destino)
@@ -23,6 +23,7 @@ class Grafo:
 
         # Adicionando o peso da aresta
         self.pesos[(origem,destino)] = peso
+        self.pesos[(destino,origem)] = peso
 
 def menor_distancia (T,distancias):
     vertice_menor_distancia = None
@@ -53,7 +54,7 @@ def dijkstra (grafo, origem):
         for u in grafo.arestas[v]:
 
             if u in T:
-                dist[u] = min(dist[u], dist[v] + grafo.pesos[(v,u)])
+                dist[u] = min(dist[u], dist[v] + grafo.pesos[(u,v)])
             
             elif u not in P:
                 dist[u] = dist[v] + grafo.pesos[(v,u)]
@@ -85,6 +86,20 @@ def adiciona_rotas_aquaticas(grafo):
 
     return grafo
 
+def menor_rota_recursiva(grafo, dist, vertice):
+    
+    if dist[vertice] == 0:
+        list = []
+        list.append(vertice)
+        return list
+    else:
+        for u in grafo.arestas[vertice]:
+            if dist[vertice] == (dist[u] + grafo.pesos[(u,vertice)]):
+                list = menor_rota_recursiva(grafo,dist,u)
+                list.append(u)
+                return list
+        
+
 def menor_rota (grafo, origem, destino, usar_aereo, usar_aquatico):
     
     if usar_aereo is True:
@@ -96,7 +111,10 @@ def menor_rota (grafo, origem, destino, usar_aereo, usar_aquatico):
         grafo = adiciona_rotas_aquaticas(grafo)
 
     dist = dijkstra(grafo, origem)
+    menor_rota = menor_rota_recursiva(grafo,dist,destino)
+    menor_rota.append(destino)
 
+    return menor_rota
     # Aplicar o conceito reverso visto nas aulas de eletiva I
 
 #########################################################################
@@ -114,3 +132,6 @@ g.adiciona_aresta('Fallarbor','Mauville',19)
 g.adiciona_aresta('Mauville','Slateport',8)
 g.adiciona_aresta('Mauville','Fortree',9)
 g.adiciona_aresta('Fortree','Lilycove',7)
+
+menor_rota_grafo = menor_rota(g,'Dewford','Mossdeep',False,True)
+print(menor_rota_grafo)
