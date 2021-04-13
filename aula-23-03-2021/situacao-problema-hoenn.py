@@ -112,9 +112,8 @@ def menor_rota (grafo, origem, destino, usar_aereo, usar_aquatico):
 
     dist = dijkstra(grafo, origem)
     menor_rota = menor_rota_recursiva(grafo,dist,destino)
-    
 
-    return menor_rota
+    return menor_rota, dist[destino]
     # Aplicar o conceito reverso visto nas aulas de eletiva I
 
 #########################################################################
@@ -133,5 +132,6 @@ g.adiciona_aresta('Mauville','Slateport',8)
 g.adiciona_aresta('Mauville','Fortree',9)
 g.adiciona_aresta('Fortree','Lilycove',7)
 
-menor_rota_grafo = menor_rota(g,'Dewford','Mossdeep',False,True)
+menor_rota_grafo, distancia = menor_rota(g,'Petalburg','Lavaridge',True,False)
 print(menor_rota_grafo)
+print(distancia)
