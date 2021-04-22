@@ -69,7 +69,7 @@ def adiciona_rotas_aereas(grafo):
     grafo.adiciona_aresta('Pacifidlog','Fortree',14)
     grafo.adiciona_aresta('Pacifidlog','Mossdeep',14)
     grafo.adiciona_aresta('Mauville','Lavaridge',6)
-    grafo.adiciona_aresta('Mauville','Lilycove',6)
+    grafo.adiciona_aresta('Mauville','Lilycove',14)
 
     return grafo
 
